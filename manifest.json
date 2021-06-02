@@ -1,0 +1,28 @@
+{
+    "name": "Q4nTools",
+    "manifest_version": 3,
+    "version": "1.0",
+    "description": "Q4n's Chrome Extention",
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*/*"
+            ],
+            "all_frames": true,
+            "js": [
+                "entrypoint.js"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "pwnlib.js"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ]
+}
