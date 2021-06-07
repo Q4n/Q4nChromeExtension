@@ -215,7 +215,7 @@ var allRules = [];
 
 allRules = allRules.concat(['div#HMcoupletDivleft', 'div#HMRichBox', 'div#HMcoupletDivright', 'div.tuiguang', 'div#adv_wrap_hh1', 'div.hh-ani-left']); // bimiacg
 allRules = allRules.concat(['div#ad_unit', 'div#first-ad', 'div.my-4', 'div#second-ad', 'div.google-ad', 'ins.adsbygoogle', 'div#ad_t2']); // csdn, segmentfault
-allRules = allRules.concat(['div#cnblogs_c1', 'div#cnblogs_c2', 'div#csdn-shop-window-top', 'div#csdn-shop-window']);
+allRules = allRules.concat(['div#cnblogs_c1', 'div#cnblogs_c2', 'div#csdn-shop-window-top', 'div#csdn-shop-window','div#downdiv']);
 
 function adFilterTimerFunc() {
     setTimeout(function () {
