@@ -1,6 +1,6 @@
 {
     "name": "Q4nTools",
-    "manifest_version": 3,
+    "manifest_version": 2,
     "version": "1.0",
     "description": "Q4n's Chrome Extention",
     "content_scripts": [
@@ -9,20 +9,34 @@
                 "*://*/*"
             ],
             "all_frames": true,
+            "match_about_blank": true,
             "js": [
                 "entrypoint.js"
             ],
             "run_at": "document_end"
         }
     ],
+    "background": {
+        "persistent": true,
+        "scripts": [
+            "background.js"
+        ]
+    },
+    "permissions": [
+        "tabs",
+        "<all_urls>",
+        "contextMenus",
+        "webRequest",
+        "webRequestBlocking",
+        "webNavigation",
+        "storage",
+        "unlimitedStorage",
+        "notifications",
+        "contentSettings",
+        "management"
+    ],
     "web_accessible_resources": [
-        {
-            "resources": [
-                "pwnlib.js"
-            ],
-            "matches": [
-                "<all_urls>"
-            ]
-        }
+        "pwnlib.js",
+        "hook.js"
     ]
 }

@@ -189,22 +189,31 @@ function enableCopy() {
 
 function adFilter(name) {
     let ad = document.querySelectorAll(name);
-    ad = Array.from(ad);
-    ad.filter(function (v) { v.style.display = 'none'; })
+    ad.forEach(function (e) {
+        if ((e.nodeName == 'SCRIPT') && (e.innerText.indexOf("_ad") < 0)) {
+            return;
+        }
+        e.parentNode.removeChild(e);
+    });
+
+    // ad = Array.from(ad);
+    // ad.filter(function (v) { v.style.display = 'none'; })
+
     if (ad.length > 0) {
-        console.log("adFilter[value.style.display='none'] --> ", name);
+        console.log("adFilter --> ", name);
     }
 }
 
-function loadGlobal(jsfilename){
+function loadGlobal(jsfilename) {
     // because of  "isolated world" 
     // ref: https://stackoverflow.com/questions/9515704/use-a-content-script-to-access-the-page-context-variables-and-functions
     var s = document.createElement('script');
     s.src = chrome.runtime.getURL(jsfilename);
-    s.onload = function() {
+    s.onload = function () {
         this.remove();
     };
     (document.head || document.documentElement).appendChild(s);
+    console.log('loadGlobal --> ', jsfilename);
 }
 
 // div#aaa 遍历id为aaa的div标签
@@ -213,11 +222,18 @@ function loadGlobal(jsfilename){
 
 var allRules = [];
 
-allRules = allRules.concat(['div#HMcoupletDivleft', 'div#HMRichBox', 'div#HMcoupletDivright', 'div.tuiguang', 'div#adv_wrap_hh1', 'div.hh-ani-left']); // bimiacg
-allRules = allRules.concat(['div#ad_unit', 'div#first-ad', 'div.my-4', 'div#second-ad', 'div.google-ad', 'ins.adsbygoogle', 'div#ad_t2']); // csdn, segmentfault
-allRules = allRules.concat(['div#cnblogs_c1', 'div#cnblogs_c2', 'div#csdn-shop-window-top', 'div#csdn-shop-window','div#downdiv']);
+allRules = allRules.concat(['div#HMcoupletDivleft', 'div#HMRichBox', 'div#HMcoupletDivright', 'div.tuiguang', 'div#adv_wrap_hh1', 'div.hh-ani-left']);
+allRules = allRules.concat(['div#ad_unit', 'div#first-ad', 'div.my-4', 'div#second-ad', 'div.google-ad', 'ins.adsbygoogle', 'div#ad_t2']);
+allRules = allRules.concat(['div#cnblogs_c1', 'div#cnblogs_c2', 'div#csdn-shop-window-top', 'div#csdn-shop-window', 'div#downdiv', 'div#fix_bottom_dom']);
+allRules = allRules.concat(['[style="position:relative;z-index:2147483647;"]', '[style="flex:1; position: relative; z-index:2147483647!important;margin:0;"]']);
+allRules = allRules.concat(['div.topAA', "[onclick=\"window.location.href='/api/goapp/'\"]"]);
 
+
+// 拦截恶意标签
 function adFilterTimerFunc() {
+    console.log('adFilterTimerFunc');
+
+    console.log()
     setTimeout(function () {
         for (name of allRules) {
             // console.log(name);
@@ -228,7 +244,7 @@ function adFilterTimerFunc() {
                 continue;
             }
         }
-    }, 1000);
+    }, 3000);
 }
 
 adFilterTimerFunc();
