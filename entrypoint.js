@@ -223,10 +223,11 @@ function loadGlobal(jsfilename) {
 var allRules = [];
 
 allRules = allRules.concat(['div#HMcoupletDivleft', 'div#HMRichBox', 'div#HMcoupletDivright', 'div.tuiguang', 'div#adv_wrap_hh1', 'div.hh-ani-left']);
-allRules = allRules.concat(['div#ad_unit', 'div#first-ad', 'div.my-4', 'div#second-ad', 'div.google-ad', 'ins.adsbygoogle', 'div#ad_t2']);
+allRules = allRules.concat(['div#ad_unit', 'div#first-ad', 'div#second-ad', 'div.google-ad', 'ins.adsbygoogle', 'div#ad_t2']);
 allRules = allRules.concat(['div#cnblogs_c1', 'div#cnblogs_c2', 'div#csdn-shop-window-top', 'div#csdn-shop-window', 'div#downdiv', 'div#fix_bottom_dom']);
 allRules = allRules.concat(['[style="position:relative;z-index:2147483647;"]', '[style="flex:1; position: relative; z-index:2147483647!important;margin:0;"]']);
 allRules = allRules.concat(['div.topAA', "[onclick=\"window.location.href='/api/goapp/'\"]"]);
+allRules = allRules.concat(['div#cs_CFdivdlST_B_0','div#cs_CFdivdlST_B_1','div#cs_DIV_cscpvrich9192B']);
 
 
 // 拦截恶意标签

@@ -3,7 +3,7 @@
 // 拦截恶意的js文件
 allRules = []
 
-allRules = allRules.concat(["*://*/*yfgg.js","*://*/*yfyh.js"]);
+allRules = allRules.concat(["*://*/*yfgg.js","*://*/*yfyh.js","*://*/*pc_pf.js"]);
 
 chrome.webRequest.onBeforeRequest.addListener(
     function (details) {
